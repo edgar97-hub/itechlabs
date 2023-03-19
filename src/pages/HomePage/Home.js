@@ -1,16 +1,16 @@
-import React from 'react';
-import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './Data';
-import { InfoSection, Pricing } from '../../components';
-import InfoSectionCustom  from './InfoSectionCustom';
+import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from "./Data";
+import { InfoSection, Pricing } from "../../components";
+import InfoSectionWelcome from "./InfoSectionWelcome/InfoSectionWelcome";
 import Contact from "../../components/contact/Contact";
- 
+
+
+
 
 function Home() {
   return (
     <div id="home">
-    
-      <InfoSectionCustom {...homeObjOne} />
-        {/** <InfoSection {...homeObjOne} />*/}
+      <InfoSectionWelcome {...homeObjOne} />
+      {/** <InfoSection {...homeObjOne} />*/}
       <InfoSection {...homeObjThree} />
       {/** <InfoSection {...homeObjTwo} />*/}
       <Pricing />
