@@ -1,0 +1,23 @@
+.footerWrapper {
+  background-color: #101522;
+
+  .linksWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    .items {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .socialMedia {
+    display: flex;
+    flex-direction: row;
+
+    .socialIcons {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}

@@ -1,40 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Container, Button } from "../../../globalStyles";
-import {
-  InfoSec,
-  InfoRow,
-  InfoColumn,
-  TextWrapper,
-  TopLine,
-  Heading,
-  Subtitle,
-  ImgWrapper,
-  Img,
-} from "../InfoSection.elements";
-import { Subscription, SubText, Form, FormInput } from "../elements";
 import { db } from "../../../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import "./InfoSectionWelcome.scss";
 // import { particleNet } from "./particle.js";
 // import * as service from "./particle";
 import { startCanvas } from "./particle2";
+import logo from "../../../images/svg-1.svg";
 
-function InfoSectionWelcome({
-  primary,
-  lightBg,
-  topLine,
-  lightTopLine,
-  lightText,
-  lightTextDesc,
-  headline,
-  description,
-  buttonLabel,
-  img,
-  alt,
-  imgStart,
-  start,
-}) {
+function InfoSectionWelcome() {
   const [email, setEmail] = useState("");
   const [loader, setLoader] = useState(false);
   const handleSubmit = async (e) => {
@@ -65,44 +38,47 @@ function InfoSectionWelcome({
     <div id="particle-canvas">
       <canvas id="nokey" width="800" height="800"></canvas>
       <div className="infoSec">
-        <div className="wrapper">
-          <div className="infoRow">
-            <div className="infoColumn">
-              <div className="textWrapper">
-                <div className="topLine">{topLine}</div>
-                <h1 className="heading">{headline}</h1>
-                <p className="subtitle">{description}</p>
-                {/** <Link to='/contact'>
+        <div className="infoRow">
+          <div className="infoColumn">
+            <div className="textWrapper">
+              <div className="topLine"></div>
+              <h1 className="heading">
+                Empresa líder en desarrollo de Software
+              </h1>
+              <p className="subtitle">
+                Brindamos experiencias de aplicaciones móviles que hacen que su
+                aplicación móvil sea tendencia en las tiendas de aplicaciones.
+              </p>
+              {/** <Link to='/contact'>
                  <Button big fontBig primary={primary}>
                     {buttonLabel}
                   </Button>
                 </Link>*/}
-                {/* <section className="subscription"> */}
-                {/** <SubText>Puedes darte de baja en cualquier momento.</SubText>*/}
-                <form className="formSubscription" onSubmit={handleSubmit}>
-                  <input
-                    className="formInput"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
-                  />
-                  <button
-                    className="formButton"
-                    style={{
-                      background: loader ? "#ccc" : " rgb(29, 110, 202)",
-                    }}
-                  >
-                    Empezar
-                  </button>
-                </form>
-                {/* </section> */}
-              </div>
+              {/* <section className="subscription"> */}
+              {/** <SubText>Puedes darte de baja en cualquier momento.</SubText>*/}
+              <form className="formSubscription" onSubmit={handleSubmit}>
+                <input
+                  className="formInput"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
+                />
+                <button
+                  className="formButton"
+                  style={{
+                    background: loader ? "#ccc" : " rgb(29, 110, 202)",
+                  }}
+                >
+                  Empezar
+                </button>
+              </form>
+              {/* </section> */}
             </div>
-            <div className="infoColumn">
-              <div className="imgWrapper">
-                <img className="img" src={img} alt={alt} />
-              </div>
+          </div>
+          <div className="infoColumn">
+            <div className="imgWrapper">
+              <img className="img" src={logo} alt={""} />
             </div>
           </div>
         </div>

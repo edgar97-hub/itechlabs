@@ -1,84 +1,91 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .wrapper-form {
   background-color: rgb(248, 246, 253);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 15px;
+
+  .title {
+    color: #315db7;
+    font-size: 2.75rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    // border: 1px solid #0d0d0f;
+  }
+  .subtitle {
+    // border: 1px solid #0d0d0f;
+    text-align: center;
+    min-width: 80%;
+    font-size: 15px;
+    color: #708198;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  .form-inputs {
+    // border: 1px solid #0d0d0f;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+  }
+  .form-message {
+    // border: 1px solid #0d0d0f;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+
+    .message {
+      min-height: 250px;
+    }
+  }
+  .form-button:hover {
+    background-color: rgb(0, 118, 214);
+  }
+  .form-button {
+    padding: 20px;
+    border: none;
+    background-color: rgb(29, 110, 202);
+    font-weight: 500;
+    font-size: 20px;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    margin-top: 10px;
+    width: 80%;
+
+    @media screen and (max-width: 650px) {
+      width: 50%;
+    }
+  }
 }
 
 input,
-textarea,
-button {
-  font-family: "Inter", sans-serif;
-}
-
-/* Contact.js */
-.form {
-  height: 100vh;
-  width: 35vw;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.form > h1 {
-  margin-bottom: 30px;
-}
-
-.form > input,
 textarea {
   padding: 20px;
   border-radius: 3px;
-  /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.137); */
   margin-bottom: 20px;
   border: 1px solid lightgray;
-  /* border: none; */
   background: #fff;
   font-size: 16px;
   color: rgb(0, 0, 32);
   outline: none;
 }
 
-.form > input:focus,
+input:focus,
 textarea:focus {
-  border: 1px solid rgb(67, 150, 218)
+  border: 1px solid rgb(67, 150, 218);
 }
 
-.form > textarea {
-  height: 150px;
-  max-width: 400px;
-  min-height: 100px;
-}
-
-.form > label {
-  padding-bottom: 10px;
-  color: rgb(0, 0, 32);
-  font-weight: bold;
-}
-
-.form > .form-button {
-  padding: 20px;
-  border: none;
-  background-color: rgb(29, 110, 202);
-  font-weight: 500;
-  font-size: 20px;
-  border-radius: 3px;
-  color: #fff;
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
-  margin-top: 10px;
-}
-
-.form > .form-button:hover {
-  background-color: rgb(0, 118, 214);
+label {
+  margin-bottom: 5px;
+  color: #000;
+  font-weight: 600;
 }

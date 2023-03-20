@@ -1,11 +1,11 @@
 import React from 'react';
-import { InfoSection, Pricing } from '../../components';
+import { InfoSection, softwareServices } from '../../components';
 import { homeObjOne, homeObjThree } from './Data';
 
 function Services() {
   return (
     <>
-      <Pricing />
+      {/* <softwareServices /> */}
       {/** <InfoSection {...homeObjOne} />
       <InfoSection {...homeObjThree} />*/}
     </>

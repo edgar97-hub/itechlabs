@@ -5,20 +5,6 @@ import { Button } from "../../globalStyles";
 import logo from "../../images/logo2.jpeg";
 import "./navbar.scss";
 
-import {
-  Nav,
-  NavbarContainer,
-  NavLogo,
-  NavIcon,
-  MobileIcon,
-  NavMenu,
-  NavItem,
-  NavItemBtn,
-  NavLinks,
-  NavBtnLink,
-  NavLinksCustom,
-} from "./Navbar.elements";
-
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -73,8 +59,11 @@ function Navbar() {
             <li className="navItem">
               <a
                 className="navLinksCustom rrr"
-                href="#home"
-                onClick={closeMobileMenu}
+                // href="#home"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  document.getElementById("home").focus();
+                }}
               >
                 Inicio
               </a>
@@ -121,7 +110,7 @@ function Navbar() {
             <li className="navItem">
               <a
                 className="navLinksCustom"
-                href="#contactus"
+                href="#contact"
                 onClick={closeMobileMenu}
               >
                 Contáctanos

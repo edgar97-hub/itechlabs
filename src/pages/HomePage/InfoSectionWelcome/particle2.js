@@ -3,7 +3,11 @@ export function startCanvas() {
   var can_w = parseInt(canvas.getAttribute("width"));
   var can_h = parseInt(canvas.getAttribute("height"));
   var ctx = canvas.getContext("2d");
-
+  // can_w = 500;
+  // can_h = 500;
+  // canvas.setAttribute("width", 500);
+  // canvas.setAttribute("height", 500);
+  // console.log(window.innerWidth);
   // console.log(typeof can_w);
   var color = "207,255,4";
   var BALL_NUM = 30;
