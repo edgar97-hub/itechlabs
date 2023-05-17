@@ -1,49 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
-import { Button } from "../../globalStyles";
-import logo from "../../images/logo2.jpeg";
+import logo from "../../images/zyro-image.png";
 import "./navbar.scss";
 
 function Navbar() {
   const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
-
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
+  const handleClick = () => {
+    setClick(!click);
   };
-
-  useEffect(() => {
-    showButton();
-  }, []);
-
-  window.addEventListener("resize", showButton);
 
   return (
     <>
-      {/* <IconContext.Provider value={{ color: '#fff' }}> */}
       <div className="nav">
         <div className="navbarContainer">
-          <a className="navLogo" href="/" onClick={closeMobileMenu}>
+          <a className="navLogo" href="/">
             {/** <NavIcon/>*/}
-            {/* <img
+            <img
               className="logo"
               src={logo}
               style={{
                 marginLeft: "50px",
-                marginTop: "0px",
+                // marginTop: "0px",
                 width: "8rem",
-                height: "5rem",
+                height: "4rem",
                 borderRadius: "9px",
+                // backgroundColor: "black",
               }}
-            /> */}
+            />
           </a>
           <div className="mobileIcon" onClick={handleClick}>
             {click ? <FaTimes /> : <FaBars />}
@@ -53,12 +37,15 @@ function Navbar() {
             onClick={handleClick}
             style={{
               left: click ? 0 : "-100%",
+              // display: click ? "visible" : "hidden",
+              // opacity: click ? "1" : "0",
+              // left: 0,
+              // transition: "all 0.5s ease",
             }}
-            click={click.toString()}
           >
             <li className="navItem">
               <a
-                className="navLinksCustom rrr"
+                className="navLinksCustom"
                 // href="#home"
                 onClick={() => {
                   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -69,73 +56,36 @@ function Navbar() {
               </a>
             </li>
             <li className="navItem ">
-              <a
-                className="navLinksCustom"
-                href="#services"
-                onClick={closeMobileMenu}
-              >
+              <a className="navLinksCustom" href="#services">
                 Servicios
               </a>
             </li>
             <li className="navItem">
-              <a
-                className="navLinksCustom"
-                href="#technologies"
-                onClick={closeMobileMenu}
-              >
+              <a className="navLinksCustom" href="#technologies">
                 Tecnologías
               </a>
             </li>
 
             <li className="navItem">
-              <a
-                className="navLinksCustom"
-                href="#about"
-                onClick={closeMobileMenu}
-              >
+              <a className="navLinksCustom" href="#about">
                 Sobre nosotros
               </a>
             </li>
 
             <li className="navItem">
-              <a
-                className="navLinksCustom"
-                href="#blog"
-                onClick={closeMobileMenu}
-              >
+              <a className="navLinksCustom" href="#blog">
                 Blog
               </a>
             </li>
 
             <li className="navItem">
-              <a
-                className="navLinksCustom"
-                href="#contact"
-                onClick={closeMobileMenu}
-              >
+              <a className="navLinksCustom" href="#contact">
                 Contáctanos
               </a>
             </li>
-
-            {/** 
-              <NavItemBtn>
-                {button ? (
-                  <NavBtnLink to='/sign-up'>
-                    <Button primary>SIGN UP</Button>
-                  </NavBtnLink>
-                ) : (
-                  <NavBtnLink to='/sign-up'>
-                    <Button onClick={closeMobileMenu} fontBig primary>
-                      SIGN UP
-                    </Button>
-                  </NavBtnLink>
-                )}
-              </NavItemBtn>
-              */}
           </ul>
         </div>
       </div>
-      {/* </IconContext.Provider> */}
     </>
   );
 }

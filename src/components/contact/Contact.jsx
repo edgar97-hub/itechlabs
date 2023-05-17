@@ -1,18 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./contact.scss";
 import { db } from "../../firebase";
-import {
-  collection,
-  getDocs,
-  deleteDoc,
-  doc,
-  getDoc,
-  onSnapshot,
-  query,
-  where,
-  setDoc,
-  addDoc,
-} from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -25,20 +14,21 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoader(true);
-    addDoc(collection(db, "contacts"), {
-      name: name,
-      email: email,
-      telephone: telephone,
-      message: message,
-    })
-      .then(() => {
-        setLoader(false);
-        alert("Tu mensaje ha sido enviado");
-      })
-      .catch((error) => {
-        alert(error.message);
-        setLoader(false);
+
+    try {
+      await addDoc(collection(db, "contacts"), {
+        name: name,
+        email: email,
+        telephone: telephone,
+        message: message,
       });
+      alert("Tu mensaje ha sido enviado");
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    }
+    setLoader(false);
+
     setName("");
     setEmail("");
     setTelephone("");
@@ -78,7 +68,7 @@ const Contact = () => {
           />
         </div>
         <div className="form-message">
-          <label>Mensaje*</label>
+          <label>Cuentanos más sobre tu proyecto*</label>
           <textarea
             className="message"
             // placeholder="Message"

@@ -9,7 +9,11 @@ export function startCanvas() {
   // canvas.setAttribute("height", 500);
   // console.log(window.innerWidth);
   // console.log(typeof can_w);
-  var color = "207,255,4";
+
+  // can_w = window.innerWidth;
+  // can_h = window.innerHeight;
+
+  var color = "255, 255, 255";
   var BALL_NUM = 30;
 
   var ball = {
@@ -26,12 +30,12 @@ export function startCanvas() {
       g: color.split(",")[1],
       b: color.split(",")[2],
     },
-    R = 2,
+    R = 2.5,
     balls = [],
     alpha_f = 0.03,
     alpha_phase = 0,
     // Line
-    link_line_width = 0.8,
+    link_line_width = 0.1,
     dis_limit = 260,
     add_mouse_point = true,
     mouse_in = false,
@@ -47,7 +51,7 @@ export function startCanvas() {
   // Random speed
   function getRandomSpeed(pos) {
     var min = -1,
-      max = 1;
+      max = 3;
     switch (pos) {
       case "top":
         return [randomNumFrom(min, max), randomNumFrom(0.1, max)];
@@ -182,7 +186,7 @@ export function startCanvas() {
         if (fraction < 1) {
           alpha = (0.1 - fraction).toString();
           //   console.log(alpha);
-          ctx.strokeStyle = "rgba(" + "150,150,150" + alpha + ")";
+          ctx.strokeStyle = "rgba(" + "255,255,255" + alpha + ")";
           ctx.lineWidth = link_line_width;
 
           ctx.beginPath();
@@ -238,7 +242,6 @@ export function startCanvas() {
   function initCanvas() {
     canvas.setAttribute("width", window.innerWidth);
     canvas.setAttribute("height", window.innerHeight);
-
     can_w = parseInt(canvas.getAttribute("width"));
     can_h = parseInt(canvas.getAttribute("height"));
   }
@@ -247,34 +250,52 @@ export function startCanvas() {
     initCanvas();
   });
 
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      console.log("Browser tab is hidden");
+    } else {
+      console.log("Browser tab is visible");
+      goMovie();
+    }
+  });
+
   function goMovie() {
-    initCanvas();
+    // initCanvas();
+    var flagInnerWidth = 0;
+    if (window.innerWidth >= 1270) {
+      flagInnerWidth = 12;
+    }
+    canvas.setAttribute("width", window.innerWidth - flagInnerWidth);
+    canvas.setAttribute("height", window.innerHeight);
+    can_w = parseInt(canvas.getAttribute("width"));
+    can_h = parseInt(canvas.getAttribute("height"));
     initBalls(BALL_NUM);
     window.requestAnimationFrame(render);
   }
   goMovie();
 
   // Mouse effect
-  //   canvas.addEventListener("mouseenter", function () {
-  //     console.log("mouseenter");
-  //     mouse_in = true;
-  //     balls.push(mouse_ball);
-  //   });
-  //   canvas.addEventListener("mouseleave", function () {
-  //     console.log("mouseleave");
-  //     mouse_in = false;
-  //     var new_balls = [];
-  //     Array.prototype.forEach.call(balls, function (b) {
-  //       if (!b.hasOwnProperty("type")) {
-  //         new_balls.push(b);
-  //       }
-  //     });
-  //     balls = new_balls.slice(0);
-  //   });
+  canvas.addEventListener("mouseenter", function () {
+    console.log("mouseenter");
+    mouse_in = true;
+    balls.push(mouse_ball);
+  });
+  canvas.addEventListener("mouseleave", function () {
+    console.log("mouseleave");
+    mouse_in = false;
+    var new_balls = [];
+    Array.prototype.forEach.call(balls, function (b) {
+      if (!b.hasOwnProperty("type")) {
+        new_balls.push(b);
+      }
+    });
+    balls = new_balls.slice(0);
+  });
+  canvas.addEventListener("mousemove", function (e) {
+    var e = e || window.event;
+    mouse_ball.x = e.pageX;
+    mouse_ball.y = e.pageY;
+    // console.log(mouse_ball);
+    // initCanvas();
+  });
 }
-// canvas.addEventListener('mousemove', function(e){
-//     var e = e || window.event;
-//     mouse_ball.x = e.pageX;
-//     mouse_ball.y = e.pageY;
-//     // console.log(mouse_ball);
-// });

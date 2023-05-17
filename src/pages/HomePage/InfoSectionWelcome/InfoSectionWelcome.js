@@ -2,35 +2,48 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import "./InfoSectionWelcome.scss";
-// import { particleNet } from "./particle.js";
-// import * as service from "./particle";
 import { startCanvas } from "./particle2";
 import logo from "../../../images/svg-1.svg";
+import { NotificationManager } from "react-notifications";
 
 function InfoSectionWelcome() {
   const [email, setEmail] = useState("");
   const [loader, setLoader] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email) {
+      alert("Ingrese tu correo electrónico");
+      return false;
+    }
     setLoader(true);
-    addDoc(collection(db, "contacts"), {
-      email: email,
-    })
-      .then(() => {
-        setLoader(false);
-      })
-      .catch((error) => {
-        alert(error.message);
-        setLoader(false);
+
+    try {
+      await addDoc(collection(db, "contacts"), {
+        email: email,
       });
+      alert("Tu correo ha sido enviado");
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    }
+    setLoader(false);
     setEmail("");
   };
   useEffect(() => {
     var canvas = document.getElementById("nokey");
     var can_w = parseInt(canvas?.getAttribute("width"));
     var can_h = parseInt(canvas?.getAttribute("height"));
-    console.log(canvas, can_w, can_h);
+
     if (canvas && can_w && can_h) {
+      // canvas.setAttribute("width", window.innerWidth);
+      // canvas.setAttribute("height", window.innerHeight);
+      // console.log("width", window.innerWidth);
+      // console.log("height", window.innerHeight);
+      // var dataUrl = canvas.toDataURL();
+      // console.log(dataUrl);
+      // document.querySelector(".infoSec").style.background =
+      // "url(" + dataUrl + ")";
+
       startCanvas();
     }
   }, []);
@@ -42,20 +55,10 @@ function InfoSectionWelcome() {
           <div className="infoColumn">
             <div className="textWrapper">
               <div className="topLine"></div>
-              <h1 className="heading">
-                Empresa líder en desarrollo de Software
-              </h1>
+              <h1 className="heading">Desarrollo de software a la medida</h1>
               <p className="subtitle">
-                Brindamos experiencias de aplicaciones móviles que hacen que su
-                aplicación móvil sea tendencia en las tiendas de aplicaciones.
+                Experimente el desarrollo ágil de productos de clase mundial
               </p>
-              {/** <Link to='/contact'>
-                 <Button big fontBig primary={primary}>
-                    {buttonLabel}
-                  </Button>
-                </Link>*/}
-              {/* <section className="subscription"> */}
-              {/** <SubText>Puedes darte de baja en cualquier momento.</SubText>*/}
               <form className="formSubscription" onSubmit={handleSubmit}>
                 <input
                   className="formInput"
@@ -73,20 +76,15 @@ function InfoSectionWelcome() {
                   Empezar
                 </button>
               </form>
-              {/* </section> */}
             </div>
           </div>
-          <div className="infoColumn">
+          {/* <div className="infoColumn">
             <div className="imgWrapper">
               <img className="img" src={logo} alt={""} />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
-
-      {/* <InfoSec lightBg={lightBg}> */}
-
-      {/* </InfoSec> */}
     </div>
   );
 }

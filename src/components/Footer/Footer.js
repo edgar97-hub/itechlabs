@@ -23,24 +23,50 @@ function Footer() {
         </div>
       </div>
       <div className="socialMedia">
-        <div className="logo"></div>
-        <div className="websiteRights">ITECHLABS © 2022</div>
+        <div className="websiteRights">
+          Copyright © 2022 ITECHFLUX EIRL. Todos los derechos reservados.
+        </div>
         <div className="socialIcons">
-          <div className="socialIconLink">
+          <a
+            className="socialIconLink"
+            href="//www.youtube.com/channel/test"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <FaFacebook />
-          </div>
-          <div className="socialIconLink">
+          </a>
+          <a
+            className="socialIconLink"
+            href="//www.youtube.com/channel/test"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <FaInstagram />
-          </div>
-          <div className="socialIconLink">
+          </a>
+          <a
+            className="socialIconLink"
+            href="//www.youtube.com/channel/test"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <FaYoutube />
-          </div>
-          <div className="socialIconLink">
+          </a>
+          <a
+            className="socialIconLink"
+            href="//www.youtube.com/channel/test"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <FaTwitter />
-          </div>
-          <div className="socialIconLink">
+          </a>
+          <a
+            className="socialIconLink"
+            href="//www.youtube.com/channel/test"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <FaLinkedin />
-          </div>
+          </a>
         </div>
       </div>
     </div>
